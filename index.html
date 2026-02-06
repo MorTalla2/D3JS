@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - Éducation aux États-Unis</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- D3.js Library pour les visualisations -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- TopoJSON pour la conversion des données géographiques -->
+    <script src="https://unpkg.com/topojson@3"></script>
+</head>
+<body>
+    <!-- Navigation latérale (sidebar) -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">📊</div>
+            <h2>Dashboard</h2>
+        </div>
+        <nav class="nav-menu">
+            <a href="#overview" class="nav-item active">
+                <span class="icon">🏠</span>
+                <span>Vue d'ensemble</span>
+            </a>
+            <a href="#map" class="nav-item">
+                <span class="icon">🗺️</span>
+                <span>Carte</span>
+            </a>
+            <a href="#charts" class="nav-item">
+                <span class="icon">📈</span>
+                <span>Graphiques</span>
+            </a>
+            <a href="#analytics" class="nav-item">
+                <span class="icon">🔍</span>
+                <span>Analyses</span>
+            </a>
+            <a href="#settings" class="nav-item">
+                <span class="icon">⚙️</span>
+                <span>Paramètres</span>
+            </a>
+        </nav>
+        
+    </aside>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- En-tête -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Éducation aux États-Unis</h1>
+                <p class="subtitle">Analyse des niveaux d'éducation par comté</p>
+            </div>
+            <div class="header-right">
+                <div class="date-display">
+                    <span class="icon">📅</span>
+                    <span id="current-date"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Cartes de statistiques clés -->
+        <section class="stats-cards">
+            <div class="stat-card card-1">
+                <div class="stat-icon">🎓</div>
+                <div class="stat-content">
+                    <p class="stat-label">Taux Moyen National</p>
+                    <h3 class="stat-value" id="avg-education">--</h3>
+                </div>
+            </div>
+            <div class="stat-card card-2">
+                <div class="stat-icon">📍</div>
+                <div class="stat-content">
+                    <p class="stat-label">Nombre de Comtés</p>
+                    <h3 class="stat-value" id="total-counties">--</h3>
+                </div>
+            </div>
+            <div class="stat-card card-3">
+                <div class="stat-icon">⬆️</div>
+                <div class="stat-content">
+                    <p class="stat-label">Taux Maximum</p>
+                    <h3 class="stat-value" id="max-education">--</h3>
+                </div>
+            </div>
+            <div class="stat-card card-4">
+                <div class="stat-icon">⬇️</div>
+                <div class="stat-content">
+                    <p class="stat-label">Taux Minimum</p>
+                    <h3 class="stat-value" id="min-education">--</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grille de visualisations -->
+        <section class="visualizations-grid">
+            <!-- Carte Choroplèthe -->
+            <div class="viz-container full-width">
+                <div class="viz-header">
+                    <h2>Carte Choroplèthe - Niveau d'Éducation par Comté</h2>
+                    <p class="viz-description">Pourcentage de diplômés (Bachelor ou supérieur) par comté américain</p>
+                </div>
+                <div class="viz-content">
+                    <div id="choropleth-map"></div>
+                    
+                </div>
+            </div>
+
+            <!-- Histogramme -->
+            <div class="viz-container">
+                <div class="viz-header">
+                    <h2>Distribution des Comtés</h2>
+                    <p class="viz-description">Nombre de comtés par tranche de pourcentage</p>
+                </div>
+                <div class="viz-content">
+                    <div id="histogram"></div>
+                </div>
+            </div>
+
+            <!-- Diagramme Circulaire -->
+            <div class="viz-container">
+                <div class="viz-header">
+                    <h2>Répartition par Niveau</h2>
+                    <p class="viz-description">Classification des comtés par niveau d'éducation</p>
+                </div>
+                <div class="viz-content">
+                    <div id="pie-chart"></div>
+                </div>
+            </div>
+
+            <!-- Graphique Radar -->
+            <div class="viz-container">
+                <div class="viz-header">
+                    <h2>Analyse Régionale</h2>
+                    <p class="viz-description">Comparaison des taux d'éducation par région</p>
+                </div>
+                <div class="viz-content">
+                    <div id="radar-chart"></div>
+                </div>
+            </div>
+
+            <!-- Graphique Linéaire -->
+            <div class="viz-container">
+                <div class="viz-header">
+                    <h2>Évolution Temporelle</h2>
+                    <p class="viz-description">Progression du taux d'éducation supérieure aux États-Unis</p>
+                </div>
+                <div class="viz-content">
+                    <div id="line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pied de page -->
+        <footer class="footer">
+            <p> Projet d'Analyse d'Éducation - Données de freeCodeCamp</p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/dashboard.js"></script>
+</body>
+</html>
